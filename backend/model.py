@@ -1,7 +1,7 @@
 import spacy
 import json
 
-with open("backend\countries+states+cities.json", "r", encoding="utf-8") as file:
+with open('backend\countries+states+cities.json', "r", encoding="utf-8") as file:
     geospatial_data = json.load(file)
 
 cities = {city["name"].upper() for country in geospatial_data for state in country["states"] for city in state["cities"]}
