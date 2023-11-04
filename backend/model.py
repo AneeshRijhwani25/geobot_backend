@@ -6,7 +6,7 @@ import os
 json_data_path = os.path.join('backend', 'countries+states+cities.json')
 
 # Use os.path.join() to create the path for the SpaCy model
-spacy_model_path = os.path.join('backend', 'en_core_web_sm')
+spacy_model_path = os.path.join('backend', 'en_core_web_sm/en_core_web_sm')
 
 with open(json_data_path, "r", encoding="utf-8") as file:
     geospatial_data = json.load(file)
