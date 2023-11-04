@@ -1,18 +1,21 @@
 import spacy
 import json
-import os  # Import the os module to work with file paths
+import os
 
-# Use os.path.join() to create the file path
-file_path = os.path.join('backend', 'countries+states+cities.json')
+# Use os.path.join() to create the file path for the JSON data
+json_data_path = os.path.join('backend', 'countries+states+cities.json')
 
-with open(file_path, "r", encoding="utf-8") as file:
+# Use os.path.join() to create the path for the SpaCy model
+spacy_model_path = os.path.join('backend', 'en_core_web_sm')
+
+with open(json_data_path, "r", encoding="utf-8") as file:
     geospatial_data = json.load(file)
 
 cities = {city["name"].upper() for country in geospatial_data for state in country["states"] for city in state["cities"]}
 states = {state["name"].upper() for country in geospatial_data for state in country["states"]}
 countries = {country["name"].upper() for country in geospatial_data}
 
-nlp = spacy.load("backend\en_core_web_sm")
+nlp = spacy.load(spacy_model_path)
 
 def categorize_entities(text):
     doc = nlp(text)
