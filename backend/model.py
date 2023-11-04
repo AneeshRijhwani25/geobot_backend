@@ -1,7 +1,7 @@
 import spacy
 import json
 
-with open("backend\countries+states+cities.json", "r", encoding="utf-8") as file:
+with open("countries+states+cities.json", "r", encoding="utf-8") as file:
     geospatial_data = json.load(file)
 
 cities = {city["name"].upper() for country in geospatial_data for state in country["states"] for city in state["cities"]}
@@ -9,7 +9,7 @@ states = {state["name"].upper() for country in geospatial_data for state in coun
 countries = {country["name"].upper() for country in geospatial_data}
 
 
-nlp = spacy.load("backend\en_core_web_sm\en_core_web_sm")
+nlp = spacy.load("en_core_web_sm\en_core_web_sm")
 
 def categorize_entities(text):
     
