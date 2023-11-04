@@ -1,4 +1,8 @@
 
 flask
 spacy
-
+--upgrade pydantic
+--upgrade thinc
+--upgrade confection
+--upgrade spacy
+typing-extensions
